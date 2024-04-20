@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { ThemeToggle } from '@/components/ui/theme/theme-toggle';
 import {
   TooltipTrigger,
   Tooltip,
@@ -40,6 +41,7 @@ const MobileNav = () => {
             </li>
           ))}
           <li>
+            <ThemeToggle />
             <UserButton />
           </li>
         </ul>
