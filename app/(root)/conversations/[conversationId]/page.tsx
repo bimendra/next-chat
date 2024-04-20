@@ -1,3 +1,5 @@
+import ConversationContainer from '@/components/ui/shared/conversation/ConversationContainer';
+
 export default function ConversationPage() {
-  return <p>Conversation page</p>;
+  return <ConversationContainer>Conversation page</ConversationContainer>;
 }
