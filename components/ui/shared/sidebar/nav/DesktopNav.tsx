@@ -1,5 +1,6 @@
 'use client';
 
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { ThemeToggle } from '@/components/ui/theme/theme-toggle';
@@ -8,12 +9,12 @@ import {
   Tooltip,
   TooltipContent,
 } from '@/components/ui/tooltip';
-import { useNavigatin } from '@/hooks/useNavigation';
+import { useNavigation } from '@/hooks/useNavigation';
 import { UserButton } from '@clerk/nextjs';
 import Link from 'next/link';
 import React from 'react';
 const DesktopNav = () => {
-  const paths = useNavigatin();
+  const paths = useNavigation();
   return (
     <Card className="hidden lg:flex lg:flex-col lg:justify-between lg:items-center lg:h-full lg:w-16 lg:px-2 lg:py-4">
       <nav>
@@ -30,6 +31,11 @@ const DesktopNav = () => {
                       {path.icon}
                     </Button>
                   </TooltipTrigger>
+                  {path.count ? (
+                    <Badge className="absolute left-6 bottom-7 px-2">
+                      {path.count}
+                    </Badge>
+                  ) : null}
                   <TooltipContent>
                     <p>{path.name}</p>
                   </TooltipContent>

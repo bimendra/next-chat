@@ -1,5 +1,6 @@
 'use client';
 
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { ThemeToggle } from '@/components/ui/theme/theme-toggle';
@@ -9,12 +10,12 @@ import {
   TooltipContent,
 } from '@/components/ui/tooltip';
 import { useConversation } from '@/hooks/useConverstion';
-import { useNavigatin } from '@/hooks/useNavigation';
+import { useNavigation } from '@/hooks/useNavigation';
 import { UserButton } from '@clerk/nextjs';
 import Link from 'next/link';
 import React from 'react';
 const MobileNav = () => {
-  const paths = useNavigatin();
+  const paths = useNavigation();
   const { isActive } = useConversation();
   if (isActive) return null;
   return (
@@ -33,6 +34,11 @@ const MobileNav = () => {
                       {path.icon}
                     </Button>
                   </TooltipTrigger>
+                  {path.count ? (
+                    <Badge className="absolute left-6 bottom-7 px-2">
+                      {path.count}
+                    </Badge>
+                  ) : null}
                   <TooltipContent>
                     <p>{path.name}</p>
                   </TooltipContent>
