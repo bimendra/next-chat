@@ -5,7 +5,7 @@ import { api } from '@/convex/_generated/api';
 import { useQuery } from 'convex/react';
 import { Loader2 } from 'lucide-react';
 import React from 'react';
-import DMConversationItem from './_components/_DMConversationItem';
+import DMConversationItem from './_components/DMConversationItem';
 
 export default function ConversationsLayout({
   children,
@@ -21,13 +21,15 @@ export default function ConversationsLayout({
               No conversations found
             </p>
           ) : (
-            conversations.map((conversation) =>
-              conversation.conversation.isGroup ? null : (
+            conversations.map((conversations) =>
+              conversations.conversation.isGroup ? null : (
                 <DMConversationItem
-                  key={conversation.conversation._id}
-                  id={conversation.conversation._id}
-                  username={conversation.otherMember?.username || ''}
-                  imageUrl={conversation.otherMember?.imageUrl || ''}
+                  key={conversations.conversation._id}
+                  id={conversations.conversation._id}
+                  username={conversations.otherMember?.username || ''}
+                  imageUrl={conversations.otherMember?.imageUrl || ''}
+                  lastMessagContent={conversations.lastMessage?.content}
+                  lastMessageSender={conversations.lastMessage?.sender}
                 />
               )
             )
