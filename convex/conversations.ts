@@ -31,7 +31,6 @@ export const get = query({
         if (!conversation) {
           throw new ConvexError('Conversation could not be found');
         }
-
         return conversation;
       })
     );
